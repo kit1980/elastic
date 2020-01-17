@@ -1074,7 +1074,7 @@ def setup_tcpstore(rank, world_size, rdzv_version, rdzv_impl):
         # FIXME: ideally, TCPStore should have an API that
         # accepts a pre-constructed socket.
         with closing(_get_socket_with_port()) as sock:
-            host = socket.gethostname()
+            host = socket.gethostbyname(socket.gethostname())
             port = sock.getsockname()[1]
 
             rdzv_impl.store_extra_data(
